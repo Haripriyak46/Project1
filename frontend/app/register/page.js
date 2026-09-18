@@ -10,6 +10,7 @@ export default function Register() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [showPassword, setShowPassword] = useState(false);
 
     const [message, setMessage] = useState("");
 
@@ -43,7 +44,7 @@ export default function Register() {
 
             setMessage("Registration successful!");
 
-          
+
             setTimeout(() => {
                 router.push("/login");
             }, 1000);
@@ -58,7 +59,7 @@ export default function Register() {
 
             <div className="w-full max-w-md bg-white rounded-xl shadow-lg p-8">
 
-              
+
                 <div className="text-center mb-8">
 
                     <h1 className="text-3xl font-bold text-gray-800">
@@ -71,10 +72,10 @@ export default function Register() {
 
                 </div>
 
-               
+
                 <form onSubmit={handleRegister} className="space-y-5">
 
-                    {/* Name */}
+                   
                     <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">
                             Name
@@ -109,25 +110,34 @@ export default function Register() {
                         />
                     </div>
 
-                 
+
                     <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">
                             Password
                         </label>
-
-                        <input
-                            type="password"
-                            placeholder="Create a password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            required
-                            className="w-full px-4 py-3 border border-gray-300 rounded-lg
+                        <div className="relative">
+                            <input
+                                type={showPassword ? "text" : "password"}
+                                placeholder="Create a password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                required
+                                className="w-full px-4 py-3 border border-gray-300 rounded-lg
                             focus:outline-none focus:ring-2 focus:ring-blue-500
                             focus:border-blue-500 transition"
-                        />
+                            />
+                            <button
+                                type="button"
+                                onClick={() => setShowPassword(!showPassword)}
+                                className="absolute right-3 top-1/2 -translate-y-1/2
+                                text-gray-500 hover:text-gray-700"
+                            >
+                                {showPassword ? '👁️' : '👁️‍🗨️'}
+                            </button>
+                        </div>
                     </div>
 
-                  
+
                     <button
                         type="submit"
                         className="w-full bg-blue-600 text-white py-3 rounded-lg
@@ -140,14 +150,14 @@ export default function Register() {
 
                 </form>
 
-                
+
                 {message && (
                     <p className="mt-5 text-center text-sm text-gray-700">
                         {message}
                     </p>
                 )}
 
-               
+
                 <div className="mt-6 text-center">
 
                     <p className="text-gray-600 text-sm">

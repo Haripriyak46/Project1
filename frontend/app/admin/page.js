@@ -58,9 +58,7 @@ export default function AdminDashboard() {
                         Admin Dashboard
                     </h2>
 
-                    <p className="text-gray-500 mt-2">
-                        Manage your application from here.
-                    </p>
+                   
                 </div>
 
                 <div className="bg-white rounded-2xl shadow-md p-6 max-w-xl">
@@ -119,23 +117,15 @@ export default function AdminDashboard() {
 
                     <div className="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition">
                         <h3 className="text-lg font-semibold text-gray-800">
-                            Employees
+                            Users
                         </h3>
 
                         <p className="text-gray-500 mt-2">
-                            Manage employees
+                            Manage users
                         </p>
                     </div>
 
-                    <div className="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition">
-                        <h3 className="text-lg font-semibold text-gray-800">
-                            Attendance
-                        </h3>
-
-                        <p className="text-gray-500 mt-2">
-                            Manage employee attendance
-                        </p>
-                    </div>
+                    
 
                     <div className="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition">
                         <h3 className="text-lg font-semibold text-gray-800">
@@ -143,7 +133,7 @@ export default function AdminDashboard() {
                         </h3>
 
                         <p className="text-gray-500 mt-2">
-                            Add and manage employee reviews
+                            Add and manage user reviews
                         </p>
                     </div>
 

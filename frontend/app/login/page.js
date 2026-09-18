@@ -10,6 +10,7 @@ export default function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [message, setMessage] = useState("");
+    const [showPassword, setShowPassword] = useState(false);
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -38,10 +39,10 @@ export default function Login() {
                 return;
             }
 
-           
+
             localStorage.setItem("token", data.token);
 
-            
+
             localStorage.setItem(
                 "user",
                 JSON.stringify(data.user)
@@ -70,10 +71,10 @@ export default function Login() {
                     </p>
                 </div>
 
-             
+
                 <form onSubmit={handleLogin} className="space-y-5">
 
-                   
+
                     <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">
                             Email
@@ -95,9 +96,9 @@ export default function Login() {
                         <label className="block text-sm font-medium text-gray-700 mb-2">
                             Password
                         </label>
-
+                        <div className="relative">
                         <input
-                            type="password"
+                            type={showPassword ? "text" : "password"}
                             placeholder="Enter your password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
@@ -106,9 +107,24 @@ export default function Login() {
                             focus:outline-none focus:ring-2 focus:ring-blue-500
                             focus:border-blue-500 transition"
                         />
+                        <button
+                                type="button"
+                                onClick={()=>setShowPassword(!showPassword)}
+                                className="absolute right-3 top-1/2 -translate-y-1/2
+                                text-gray-500 hover:text-gray-700"
+                            >
+                                {showPassword ? '👁️' : '👁️‍🗨️'}
+                            </button>
+                            </div>
                     </div>
+                    <button
+                        type="button"
+                        onClick={() => router.push("/forgotPassword")}
+                        className="text-sm text-blue-600 hover:underline"
+                    >
+                        Forgot Password?
+                    </button>
 
-                   
                     <button
                         type="submit"
                         className="w-full bg-blue-600 text-white py-3 rounded-lg
@@ -127,7 +143,7 @@ export default function Login() {
                     </p>
                 )}
 
-             
+
                 <div className="mt-6 text-center">
 
                     <p className="text-gray-600 text-sm">
@@ -149,4 +165,3 @@ export default function Login() {
     );
 }
 
- 

@@ -10,6 +10,7 @@ export default function AdminLogin() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [message, setMessage] = useState("");
+    const [showPassword, setShowPassword] = useState(false);
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -110,9 +111,9 @@ export default function AdminLogin() {
                             <label className="block text-sm font-medium text-gray-700 mb-2">
                                 Admin Password
                             </label>
-
+                            <div className="relative">
                             <input
-                                type="password"
+                                type={showPassword ? "text" : "password"}
                                 placeholder="Enter admin password"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
@@ -122,6 +123,15 @@ export default function AdminLogin() {
                                 focus:outline-none focus:ring-2 focus:ring-blue-500
                                 focus:border-transparent transition duration-200"
                             />
+                            <button
+                                type="button"
+                                onClick={()=>setShowPassword(!showPassword)}
+                                className="absolute right-3 top-1/2 -translate-y-1/2
+                                text-gray-500 hover:text-gray-700"
+                            >
+                                {showPassword ? '👁️' : '👁️‍🗨️'}
+                            </button>
+                            </div>
                         </div>
 
                         <button
