@@ -1,10 +1,10 @@
 const Admin = require("../model/Admin");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const User = require("../model/User");
 
 const adminLogin = async (req, res) => {
     try {
-        console.log("LOGIN REQUEST BODY:", req.body);
         const { email, password } = req.body;
 
         
@@ -17,7 +17,7 @@ const adminLogin = async (req, res) => {
         const admin = await Admin.findOne({
             email: email.toLowerCase()
         });
-        console.log("ADMIN FOUND:", admin);
+        
 
         if (!admin) {
             return res.status(401).json({
@@ -30,7 +30,7 @@ const adminLogin = async (req, res) => {
             password,
             admin.password
         );
-        console.log("PASSWORD CORRECT:", isPasswordCorrect);
+        
 
 
         if (!isPasswordCorrect) {
@@ -69,7 +69,24 @@ const adminLogin = async (req, res) => {
         });
     }
 };
+const getUsers = async (req, res) => {
+    try {
+        const users = await User.find().select("-password");
+
+        res.status(200).json({
+            users
+        });
+
+    } catch (error) {
+        console.log(error);
+
+        res.status(500).json({
+            message: "Failed to fetch users"
+        });
+    }
+};
 
 module.exports = {
-    adminLogin
+    adminLogin,
+    getUsers
 };

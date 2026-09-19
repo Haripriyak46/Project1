@@ -50,7 +50,7 @@ export default function Login() {
 
             setMessage("Login successful!");
 
-            router.push("/");
+            router.push("/userDashboard");
         } catch (error) {
             setMessage("Something went wrong");
         }
